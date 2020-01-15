@@ -1,0 +1,21 @@
+
+<div class="row">
+    <div class="col">
+        <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar Artista..">
+    </div>
+</div>
+
+
+<mdb-card *ngFor="let artist of artists">
+    <!--Card image-->
+    <mdb-card-img [src]="artist.images[0].url" alt="Card image cap" style="width: 50%;"></mdb-card-img>
+    <!--Card content-->
+    <mdb-card-body>
+      <!--Title-->
+      <mdb-card-title>
+        <h4>{{artist.name}}</h4>
+      </mdb-card-title>
+      <!--Text-->    
+    </mdb-card-body>
+  </mdb-card>
+
