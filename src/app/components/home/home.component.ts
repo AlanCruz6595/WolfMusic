@@ -9,15 +9,28 @@ import { ZMusicService } from 'src/app/services/z-music.service';
 export class HomeComponent{
 
   newSongs : any[] = []; 
+  loader : boolean;
+
+  error: boolean;
+  mensajeError: string;
+
   //Metodo GET Traer datos JSON o AJAX ya sea desde otro servidor por medio de URL
   constructor(private zmusic : ZMusicService) {
 
+    this.loader = true;
+    this.error = false;
 
     this.zmusic.getNewRealeses()
     .subscribe( (data: any)=>{
-      console.log(data.albums.items);
-      this.newSongs = data.albums.items;
-    })
+      this.newSongs = data;
+      this.loader = false;
+    },(errorService) =>{
+      
+      this.loader = false;
+      this.error = true; 
+      console.log(errorService);
+      this.mensajeError = errorService.error.error.message;
+    });
   }
   
 }

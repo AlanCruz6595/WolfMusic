@@ -1,0 +1,19 @@
+<mdb-card (click)="seeArtist(item)" *ngFor="let item of items" class="m-5 text-center animated fadeIn" class="card puntero">
+    <!--Card image-->
+    <mdb-card-img [src]="item.images | errorImage" alt="Card image cap" style="width: 25%; height: 25%; "></mdb-card-img>
+    <!--Card content-->
+    <mdb-card-body>
+
+      <!--Title-->
+      <mdb-card-title>
+        <h4>{{item.name}}</h4>
+      </mdb-card-title>
+
+      <!--Text-->
+      <span *ngFor="let artist of item.artists" class="badge badge-pill badge-success">{{artist.name}}</span>
+    </mdb-card-body>
+  </mdb-card>
+
+
+   
+  

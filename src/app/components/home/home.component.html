@@ -1,17 +1,8 @@
 
-  <mdb-card *ngFor="let song of newSongs">
-    <!--Card image-->
-    <mdb-card-img [src]="song.images[0].url" alt="Card image cap" style="width: 50%;"></mdb-card-img>
-    <!--Card content-->
-    <mdb-card-body>
+<app-loader class="m-5" *ngIf="loader"></app-loader>
 
-      <!--Title-->
-      <mdb-card-title>
-        <h4>{{song.name}}</h4>
-      </mdb-card-title>
+<div *ngIf="error" class="alert alert-danger"><h3>Error <p>{{mensajeError}}}</p> </h3></div>
 
-      <!--Text-->
-      <span *ngFor="let artist of song.artists" class="badge badge-pill badge-success">{{artist.name}}</span>
-    </mdb-card-body>
-  </mdb-card>
+<app-card [items]="newSongs"></app-card>
+  
 

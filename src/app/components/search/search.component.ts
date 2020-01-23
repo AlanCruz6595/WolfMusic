@@ -9,14 +9,18 @@ import { ZMusicService } from 'src/app/services/z-music.service';
 export class SearchComponent{
 
   artists : any[] = [];
+  loader : boolean;
 
   constructor(private zMusicService : ZMusicService) { }
 
   buscar(termino: string){
     console.log(termino);
-    this.zMusicService.getArtist(termino).subscribe((data: any) =>{
-      console.log(data.artists.items);
-      this.artists = data.artists.items;
+
+    this.loader = true;
+    this.zMusicService.getArtists(termino).subscribe((data: any) =>{
+      console.log(data);
+      this.artists = data;
+      this.loader = false;
     })
   }
   
